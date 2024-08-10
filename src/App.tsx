@@ -1,7 +1,14 @@
-import React from 'react';
+import { ApolloProvider } from '@apollo/client';
 
-const App = () => {
-  return <div>App</div>;
+import { client } from './apollo/client';
+import { Welcome } from './screens/Welcome';
+
+const App: React.FC = () => {
+  return (
+    <ApolloProvider client={client}>
+      <Welcome />
+    </ApolloProvider>
+  );
 };
 
 export default App;

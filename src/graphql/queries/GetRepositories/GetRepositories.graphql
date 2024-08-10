@@ -1,0 +1,18 @@
+query GetRepositories($query: String!) {
+  search(query: $query, type: REPOSITORY, first: 20) {
+    edges {
+      node {
+        ... on Repository {
+          id
+          name
+          primaryLanguage {
+            name
+          }
+          forkCount
+          stargazerCount
+          updatedAt
+        }
+      }
+    }
+  }
+}

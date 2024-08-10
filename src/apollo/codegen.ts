@@ -2,17 +2,18 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'github.schema.graphql',
+  schema: './src/apollo/github.schema.graphql',  // Путь к файлу схемы
   documents: './src/**/*.graphql',
   generates: {
-    './src/types.generated.ts': {
+    './src/generated/types.generated.ts': {
       plugins: ['typescript'],
     },
-    './src/': {
-      preset: 'near-operation-file',
+    './src/generated/': {
+      preset: 'near-operation-file', // Используем пресет near-operation-file
       presetConfig: {
-        extension: '.generated.ts',
-        baseTypesPath: 'types.generated.ts',
+        extension: '.generated.ts', // Корректное расширение для плагина typescript-react-apollo
+        baseTypesPath: 'types.generated.ts', // Указываем на базовые типы
+        folder: '', // Оставляем пустым, чтобы файлы оставались в `generated`
       },
       plugins: ['typescript-operations', 'typescript-react-apollo'],
     },
