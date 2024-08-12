@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { Button, Grid } from '@mui/material';
 
 import { useSearch } from '../../hooks/useSearch';
@@ -14,10 +14,14 @@ export const Search: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  console.log(searchTerm, inputValue);
+  const handleSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
+
+    setSearchTerm(inputValue);
+  };
 
   return (
-    <Grid container gap="8px" alignItems="center" component="form">
+    <Grid onSubmit={handleSubmit} container gap="8px" alignItems="center" component="form">
       <input
         placeholder="Введите поисковый запрос"
         value={inputValue}
