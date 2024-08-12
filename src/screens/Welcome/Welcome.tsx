@@ -1,13 +1,13 @@
-import { useGetRepositoriesQuery } from '../../graphql/queries/GetRepositories/GetRepositories.generated';
+import { Container, Typography } from '@mui/material';
+
+import styles from './Welcome.module.scss';
 
 export const Welcome: React.FC = () => {
-  const { data } = useGetRepositoriesQuery({
-    variables: {
-      query: 'ui-kit',
-    },
-  });
-
-  console.log(data);
-
-  return <div>Welcome</div>;
+  return (
+    <Container className={styles.container}>
+      <Typography component="h1" variant="h3" textAlign="center">
+        Добро пожаловать
+      </Typography>
+    </Container>
+  );
 };

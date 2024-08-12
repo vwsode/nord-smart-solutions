@@ -1,4 +1,4 @@
-import * as Types from '../../generated/types.generated';
+import * as Types from '../../../generated/types.generated';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
@@ -8,7 +8,7 @@ export type GetRepositoriesQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetRepositoriesQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', edges?: Array<{ __typename?: 'SearchResultItemEdge', node?: { __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository', id: string, name: string, forkCount: number, stargazerCount: number, updatedAt: any, primaryLanguage?: { __typename?: 'Language', name: string } | null } | { __typename?: 'User' } | null } | null> | null } };
+export type GetRepositoriesQuery = { __typename?: 'Query', search: { __typename?: 'SearchResultItemConnection', edges?: Array<{ __typename?: 'SearchResultItemEdge', node?: { __typename?: 'App' } | { __typename?: 'Discussion' } | { __typename?: 'Issue' } | { __typename?: 'MarketplaceListing' } | { __typename?: 'Organization' } | { __typename?: 'PullRequest' } | { __typename?: 'Repository', id: string, name: string, description?: string | null, forkCount: number, stargazerCount: number, updatedAt: any, primaryLanguage?: { __typename?: 'Language', name: string } | null, languages?: { __typename?: 'LanguageConnection', nodes?: Array<{ __typename?: 'Language', name: string } | null> | null } | null } | { __typename?: 'User' } | null } | null> | null } };
 
 
 export const GetRepositoriesDocument = gql`
@@ -21,6 +21,12 @@ export const GetRepositoriesDocument = gql`
           name
           primaryLanguage {
             name
+          }
+          description
+          languages(first: 10) {
+            nodes {
+              name
+            }
           }
           forkCount
           stargazerCount

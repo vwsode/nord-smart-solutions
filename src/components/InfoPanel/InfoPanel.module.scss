@@ -1,0 +1,39 @@
+.drawer {
+  width: 480px;
+  height: 100%;
+  background-color: var(--app-drawer-bg);
+  padding: 24px;
+}
+
+.title {
+  color: #4f4f4f;
+  align-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.stars {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #ffb400;
+}
+
+.top {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}

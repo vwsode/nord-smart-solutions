@@ -1,14 +1,21 @@
-import { ApolloProvider } from '@apollo/client';
+import { useEffect } from 'react';
 
-import { client } from './apollo/client';
+import { Repositories } from './screens/Repositories';
 import { Welcome } from './screens/Welcome';
+import { Layout } from './components/Layout';
+import { useSearch } from './hooks/useSearch';
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const App: React.FC = () => {
-  return (
-    <ApolloProvider client={client}>
-      <Welcome />
-    </ApolloProvider>
-  );
+  const { searchTerm } = useSearch();
+
+  useEffect(() => {}, [searchTerm]);
+
+  return <Layout>{searchTerm ? <Repositories /> : <Welcome />}</Layout>;
 };
 
 export default App;

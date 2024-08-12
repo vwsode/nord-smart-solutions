@@ -8,6 +8,12 @@ query GetRepositories($query: String!) {
           primaryLanguage {
             name
           }
+          description
+          languages(first: 10) {
+            nodes {
+              name
+            }
+          }
           forkCount
           stargazerCount
           updatedAt
